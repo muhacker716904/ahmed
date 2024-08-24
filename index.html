@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد العلي - مطور ويب</title>
+    <style>
+        /* إعدادات عامة */
+        body {
+            background-image: url("assest/لقطة\ الشاشة\ 2024-08-23\ 204958.png");
+        background-size: cover; /* لتغطية كامل الشاشة */
+        background-position: center; /* لتوسيط الخلفية */
+        background-repeat: no-repeat; /* لمنع تكرار الخلفية */
+        background-attachment: fixed; /* لتثبيت الخلفية أثناء التمرير */
+        color: white; /* تغيير لون النص ليكون مرئياً على الخلفية الداكنة */
+        color: #000;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            text-align: center;
+            overflow-x: hidden;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        body.dark-mode {
+            background-image: url("assest/sesrot.jpeg");
+            background-size: cover; /* لتغطية كامل الشاشة */
+            background-position: center; /* لتوسيط الخلفية */
+            background-repeat: no-repeat; /* لمنع تكرار الخلفية */
+            background-attachment: fixed; /* لتثبيت الخلفية أثناء التمرير */
+            color: 000; /* تغيير لون النص ليكون مرئياً على الخلفية الداكنة */
+        }
+
+        /* زر تغيير الوضع الداكن */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #0033cc;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #002a80;
+            transform: rotate(180deg);
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background-color: #66b3ff;
+        }
+
+        body.dark-mode .dark-mode-toggle:hover {
+            background-color: #004b87;
+        }
+
+        /* زر تسجيل الدخول */
+        .login-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0033cc;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s, transform 0.3s;
+            z-index: 1000;
+        }
+
+        .login-button:hover {
+            background-color: #002a80;
+        }
+
+        body.dark-mode .login-button {
+            background-color: #66b3ff;
+        }
+
+        body.dark-mode .login-button:hover {
+            background-color: #004b87;
+        }
+
+        /* زر البريد الإلكتروني */
+        .email-display {
+            display: none; /* مخفي بشكل افتراضي */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #0033cc;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: default;
+            font-size: 1em;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .logout-button {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+    margin-left: 10px;
+}
+
+.logout-button:hover {
+    background-color: #990000;
+}
+
+        /* شريط تعريفي أعلى الصفحة */
+        .header-bar {
+            background: linear-gradient(90deg, #66b3ff, #3399ff);
+            padding: 15px;
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: slideInFromTop 1.5s ease-out;
+            position: relative;
+            margin-top: 60px; /* لضبط المسافة أسفل الأزرار الثابتة */
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 700px;
+            margin: 50px auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1.5s ease-out;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        body.dark-mode .container {
+            background-color: #1e2a38;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #0033cc;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            animation: fadeIn 2s;
+        }
+
+        body.dark-mode h1, body.dark-mode p {
+            color: #ffffff;
+        }
+
+        .contact {
+            font-weight: bold;
+            color: #0033cc;
+            margin-bottom: 30px;
+            animation: fadeIn 2s;
+        }
+
+        body.dark-mode .contact {
+            color: #66b3ff;
+        }
+
+        /* شريط المهارات */
+        .skills {
+            margin: 30px 0;
+        }
+
+        .skill-bar {
+            background-color: #f0faff;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .skill-bar span {
+            display: block;
+            height: 25px;
+            background-color: #0033cc;
+            width: 0;
+            animation: fillBar 2s forwards;
+        }
+
+        body.dark-mode .skill-bar {
+            background-color: #003366;
+        }
+
+        .skill-bar span:nth-child(1) { background-color: #74b8d3; }
+        .skill-bar span:nth-child(2) { background-color: #74b8d3; }
+        .skill-bar span:nth-child(3) { background-color: #74b8d3; }
+
+        /* شريط الاقتباس */
+        .quote-bar {
+            background-color: #66b3ff;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            font-style: italic;
+            margin-top: 40px;
+            animation: fadeIn 3s;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        body.dark-mode .quote-bar {
+            background-color: #004b87;
+            color: #ffffff;
+        }
+
+        /* رموز منصات التواصل الاجتماعي */
+        .social-icons {
+            margin-top: 20px;
+            animation: fadeIn 3s;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #ffffff;
+            margin: 0 10px;
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: #0033cc;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons i {
+            font-size: 1.5em;
+        }
+
+        body.dark-mode .social-icons a {
+            background-color: #66b3ff;
+        }
+
+        /* حركات CSS */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes slideInFromTop {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fillBar {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
+
+    <!-- استيراد مكتبة الأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <!-- زر تسجيل الخروج -->
+        <button class="logout-button" id="logoutButton">تسجيل الخروج</button>
+        <!-- بقية عناصر الهيدر -->
+        <button class="login-button" id="loginButton">تسجيل دخول</button>
+        <div class="email-display" id="emailDisplay" style="margin-right: 120px;"></div>
+    </header>
+    <!-- زر تغيير الوضع الداكن -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+    
+    <!-- زر تسجيل الدخول -->
+    <button class="login-button" onclick="location.href='login.html'">تسجيل الدخول</button>
+
+    <!-- زر البريد الإلكتروني -->
+    <div class="email-display" id="emailDisplay"></div>
+
+    <!-- شريط تعريفي أعلى الصفحة -->
+    <div class="header-bar">مرحبًا بكم في صفحة محمد العلي - مطور ويب</div>
+
+    <div class="container">
+        <h1>محمد العلي</h1>
+        <p>أنا مطور ويب متحمس ومحب للتقنية. أعمل في تطوير مواقع الويب باستخدام أحدث التقنيات وأحب التعلم المستمر لتطوير مهاراتي.</p>
+        <p>أحب قضاء وقت فراغي في التعلم عن تقنيات جديدة، البرمجة، وتطوير مشاريع جانبية. أطمح إلى تطوير مشاريعي الخاصة والمساهمة في تحسين تجارب المستخدمين على الويب.</p>
+        <p class="contact">يمكنك التواصل معي عبر البريد الإلكتروني: muhammedel350@gmail.com</p>
+        
+        <!-- شريط المهارات -->
+        <div class="skills">
+            <div class="skill-bar">
+                <span style="width: 90%;">HTML & CSS</span>
+            </div>
+            <div class="skill-bar">
+                <span style="width: 80%;">JavaScript</span>
+            </div>
+            <div class="skill-bar">
+                <span style="width: 70%;">React</span>
+            </div>
+        </div>
+        
+        <!-- شريط الاقتباس -->
+        <div class="quote-bar">
+            "التكنولوجيا هي فن إبداع المستقبل." - محمد العلي
+        </div>
+
+        <!-- رموز منصات التواصل الاجتماعي -->
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61563245703289&sk=about" target="_blank" title="facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/muhacker716904" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="mailto:muhammedel350@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/+905013049742" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@Muhammed-999-Ali" target="_blank" title="youtube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const button = document.querySelector('.dark-mode-toggle');
+            button.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        function updateDisplayEmail(email) {
+            const emailDisplay = document.getElementById('emailDisplay');
+            emailDisplay.textContent = email;
+            emailDisplay.style.display = 'block';
+            document.querySelector('.login-button').style.display = 'none';
+        }
+
+        // التحقق مما إذا كان هناك بريد إلكتروني مخزن في التخزين المحلي
+        const storedEmail = localStorage.getItem('userEmail');
+        if (storedEmail) {
+            updateDisplayEmail(storedEmail);
+        }// عندما يتم تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutButton = document.getElementById('logoutButton');
+
+    // التحقق من حالة تسجيل الدخول عند تحميل الصفحة
+    if (localStorage.getItem('loggedIn') === 'true') {
+        document.getElementById('loginButton').style.display = 'none';
+        document.getElementById('emailDisplay').textContent = localStorage.getItem('userEmail');
+    } else {
+        logoutButton.style.display = 'none';
+    }
+
+    // إضافة حدث عند الضغط على زر تسجيل الخروج
+    logoutButton.addEventListener('click', function() {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('userEmail');
+        window.location.href = 'login.html'; // تحويل المستخدم إلى صفحة تسجيل الدخول
+    });
+});
+
+    </script>
+</body>
+</html>

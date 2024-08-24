@@ -1,0 +1,74 @@
+/* إعدادات عامة للصفحة */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #80b2dd, #ffffff); /* تدرج بين الأزرق الفاتح والأبيض */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* نموذج تسجيل الدخول */
+.container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 400px;
+    margin: 50px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #0033cc;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #0033cc;
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #002a80;
+}
+
+/* روابط */
+p {
+    margin-top: 20px;
+}
+
+a {
+    color: #0033cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    width: 327px;
+}
